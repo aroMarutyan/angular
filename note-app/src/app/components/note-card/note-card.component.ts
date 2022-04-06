@@ -16,7 +16,7 @@ export interface Note {
   styleUrls: ['./note-card.component.scss'],
 })
 export class NoteCardComponent implements OnInit {
-  @Input() note: Note;
+  @Input() notes: Note;
 
   constructor() {}
 
