@@ -1,19 +1,19 @@
 import { Subject } from 'rxjs';
 import { ActionTypes } from './actions';
-import { Note } from '../components/';
+// import { Note } from '../components/note-card/note-card.component';
 
 interface InitialState {
-  notes: Array<Object>;
+  notes: any[];
 }
-
-let state: InitialState = {
-  notes: [],
-};
 
 interface Event {
   type: String;
   payload?: Object;
 }
+
+let state: InitialState = {
+  notes: [],
+};
 
 export const store = new Subject<InitialState>();
 export const eventDispatcher = new Subject<Event>();
@@ -26,7 +26,7 @@ eventDispatcher.subscribe((data: Event) => {
 
     case ActionTypes.CREATE_NOTE:
       state = {
-        notes: [...state.notes, data.payload],
+        notes: [...state.notes, data.payload!],
       };
       store.next(state);
       break;
@@ -34,7 +34,7 @@ eventDispatcher.subscribe((data: Event) => {
     case ActionTypes.DELETE_NOTE:
       const { notes } = state;
       const id = data.payload;
-      const updatedNotes = notes.filter((note: Note) => note.id !== id);
+      const updatedNotes = notes.filter((note: any) => note.id !== id); //Change to Note
       state = {
         notes: updatedNotes,
       };

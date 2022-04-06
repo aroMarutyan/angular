@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { eventDispatcher } from '../../store';
 import { ActionTypes } from '../../store/actions';
 
-declare const feather;
+declare const feather: any;
 
 export interface Note {
   id: string;
@@ -16,7 +16,7 @@ export interface Note {
   styleUrls: ['./note-card.component.scss'],
 })
 export class NoteCardComponent implements OnInit {
-  @Input() note: Note;
+  @Input() note!: Note;
 
   constructor() {}
 
@@ -24,7 +24,7 @@ export class NoteCardComponent implements OnInit {
     feather.replace();
   }
 
-  deleteNote(id) {
+  deleteNote(id: string) {
     const shouldDelete = confirm('Are you sure you want to delete this note?');
 
     if (shouldDelete) {
