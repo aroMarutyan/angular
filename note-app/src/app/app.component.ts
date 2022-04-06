@@ -17,8 +17,6 @@ export class AppComponent implements OnInit {
 
   notes: Object[] = [];
 
-  // constructor() {}
-
   ngOnInit() {
     eventDispatcher.next({ type: ActionTypes.GET_NOTES });
   }

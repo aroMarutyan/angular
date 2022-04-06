@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { nanoid } from 'nanoid';
-import { Note } from '../note-card/note-card.component';
+import { Note } from '../../models/note';
 import { eventDispatcher } from '../../store';
 import { ActionTypes } from '../../store/actions';
 
@@ -16,20 +16,13 @@ export class NoteFormComponent implements OnInit {
     id: '',
     title: '',
     note: '',
+    completed: false,
   };
 
   step = 1;
 
   isStepComplete(step: number): boolean {
     return step === 1 ? !!this.note.title : !!this.note.note;
-
-    // switch (step) {
-    //   case 1:
-    //     return !!this.note.title;
-    //   case 2:
-    //     return !!this.note.note;
-    //     default:
-    // }
   }
 
   completeStep() {
@@ -58,6 +51,7 @@ export class NoteFormComponent implements OnInit {
       id: '',
       title: '',
       note: '',
+      completed: false,
     };
     this.step = 1;
   }

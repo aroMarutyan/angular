@@ -1,6 +1,12 @@
 <div class="note-card">
-  <div class="card text-white bg-card mb-3">
+  <div
+    class="card text-white bg-card mb-3"
+    [ngClass]="{ 'bg-color-completed': note.completed }"
+  >
     <div class="card-header">
+      <button (click)="completeNote(note.id)">
+        <i data-feather="check-circle" id="complete-note"></i>
+      </button>
       <button (click)="deleteNote(note.id)">
         <i data-feather="trash-2" id="trash-note"></i>
       </button>
@@ -8,6 +14,7 @@
     <div class="card-body">
       <h4 class="card-title note-title">{{ note.title }}</h4>
       <p class="card-text note-text">{{ note.note }}</p>
+      <p class="card-text note-text">{{ note.completed }}</p>
     </div>
   </div>
 </div>

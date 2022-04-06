@@ -1,6 +1,7 @@
 import { Subject } from 'rxjs';
 import { ActionTypes } from './actions';
-// import { Note } from '../components/note-card/note-card.component';
+import { Note } from '../models/note';
+import { data } from './notesRepo';
 
 interface InitialState {
   notes: any[];
@@ -12,7 +13,7 @@ interface Event {
 }
 
 let state: InitialState = {
-  notes: [],
+  notes: [...data],
 };
 
 export const store = new Subject<InitialState>();
@@ -20,26 +21,42 @@ export const eventDispatcher = new Subject<Event>();
 
 eventDispatcher.subscribe((data: Event) => {
   switch (data.type) {
-    case ActionTypes.GET_NOTES:
+    case ActionTypes.GET_NOTES: {
       store.next(state);
       break;
+    }
 
-    case ActionTypes.CREATE_NOTE:
+    case ActionTypes.CREATE_NOTE: {
       state = {
-        notes: [...state.notes, data.payload!],
+        notes: [...state.notes, data.payload],
       };
       store.next(state);
       break;
+    }
 
-    case ActionTypes.DELETE_NOTE:
+    case ActionTypes.DELETE_NOTE: {
       const { notes } = state;
       const id = data.payload;
-      const updatedNotes = notes.filter((note: any) => note.id !== id); //Change to Note
+      const updatedNotes = notes.filter((note: Note) => note.id !== id);
       state = {
         notes: updatedNotes,
       };
       store.next(state);
       break;
+    }
+
+    case ActionTypes.COMPLETE_NOTE:
+      const { notes } = state;
+      const id = data.payload;
+      const updatedNotes = notes.map((note: Note) =>
+        note.id !== id ? note : { ...note, completed: !note.completed }
+      );
+      state = {
+        notes: updatedNotes,
+      };
+      store.next(state);
+      break;
+
     default:
       break;
   }
