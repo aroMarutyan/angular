@@ -16,6 +16,14 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul> -->
-
-<input type="text" [(ngModel)]="name" />
-<p>{{ name }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <input type="text" [(ngModel)]="name" />
+      <p>{{ name }}</p>
+      <!-- <app-servers></app-servers> -->
+      <!-- <div app-servers></div> -->
+      <div class="app-servers"></div>
+    </div>
+  </div>
+</div>
