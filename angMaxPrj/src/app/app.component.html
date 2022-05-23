@@ -8,4 +8,10 @@
       ></app-shopping-list>
     </div>
   </div>
+  <p appBasicHighlight>Basic Highlight</p>
+  <p [appBetterHighlight]="'red'" defaultColor="yellow">
+    Better, Reactive Highlight
+  </p>
+
+  <div *appUnless="false">Show</div>
 </div>

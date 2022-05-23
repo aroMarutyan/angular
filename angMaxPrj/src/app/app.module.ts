@@ -9,11 +9,25 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { BasicHighlight } from './directives/basic-highlight.directive.directive';
-import { BetterHighlightDirective } from './directives/better-highlight.directive';
-
+import { BasicHighlightDirective } from './directives/basic-highlight/basic-highlight.directive.directive';
+import { BetterHighlightDirective } from './directives/better-highlight/better-highlight.directive';
+import { UnlessDirective } from './directives/unless/unless.directive';
+import { DropdownDirective } from './shared/dropdown.directive';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, RecipesComponent, RecipeListComponent, RecipeDetailComponent, RecipeItemComponent, ShoppingListComponent, ShoppingEditComponent, BasicHighlight.DirectiveDirective, BetterHighlightDirective],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    RecipesComponent,
+    RecipeListComponent,
+    RecipeDetailComponent,
+    RecipeItemComponent,
+    ShoppingListComponent,
+    ShoppingEditComponent,
+    BasicHighlightDirective,
+    BetterHighlightDirective,
+    UnlessDirective,
+    DropdownDirective,
+  ],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
